@@ -9,10 +9,16 @@ public class GuacamoleButton : Button {
 
     [HideInInspector]ParticleSystem particles;
 
+    AudioClip s_hit;
+    AudioClip s_water;
+
+    AudioSource aSource;
 
     public void StartLeaking() {
         isLeaking = true;
         particles.Play();
+        aSource.Play();
+        
     }
 
     public void StopLeaking()
@@ -20,6 +26,8 @@ public class GuacamoleButton : Button {
         ShaderManager.LayerMask(GetComponent<SpriteRenderer>(), Color.blue);
         particles.Stop();
         isLeaking = false;
+        AudioManager.PlayClip(s_hit);
+        aSource.Stop();
         
         roomToFill.Drain();
         
@@ -29,6 +37,11 @@ public class GuacamoleButton : Button {
     {
         base.Start();
         particles = GetComponentInChildren<ParticleSystem>();
+        s_hit = Resources.Load("Sounds/guacamole") as AudioClip;
+        s_water = Resources.Load("Sounds/guacamoleWater") as AudioClip;
+        aSource = gameObject.AddComponent<AudioSource>();
+        aSource.loop = true;
+        aSource.clip = s_water;
         
     }
 

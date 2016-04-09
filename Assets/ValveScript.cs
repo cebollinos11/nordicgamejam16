@@ -13,6 +13,8 @@ public class ValveScript : MonoBehaviour {
 
     public TextMesh turnCountText;
 
+    public Room roomToFill;
+
     
 
 	// Use this for initialization
@@ -45,6 +47,7 @@ public class ValveScript : MonoBehaviour {
             ShaderManager.LayerMask(ValveSprite.GetComponent<SpriteRenderer>(), Color.blue);
             completedTurns++;
             updateText();
+            roomToFill.Drain();
 
             for (int i = 0; i < valveTriggers.Length; i++)
             {

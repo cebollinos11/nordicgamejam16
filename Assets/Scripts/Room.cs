@@ -15,9 +15,11 @@ public class Room : MonoBehaviour
     public float filledAmount;
     public float FILLOVERFLOWLIMIT = 65;
     public float fillSpeed = 1;
+    public float lockTime = 10;
 
     //Water
     private Vector3 waterOrigScale;
+    private float lockTimeRemaining;
 
     [SerializeField] protected float drainAmount = 10;
     [SerializeField] private Transform water;
@@ -25,6 +27,7 @@ public class Room : MonoBehaviour
     protected virtual void Start()
     {
         filledAmount = 0;
+        lockTimeRemaining = lockTime;
         state = RoomState.Idle;
         waterOrigScale = water.localScale;
     }
@@ -32,11 +35,20 @@ public class Room : MonoBehaviour
     protected virtual void Update()
     {
         water.localScale =  new Vector3(waterOrigScale.x, waterOrigScale.y * (filledAmount/100f), waterOrigScale.z);
+        if (isLocked)
+        {
+            lockTimeRemaining -= Time.deltaTime;
+            if (lockTimeRemaining <= 0) 
+            {
+                SetLock(false);
+            }
+        }
     }
 
     public void SetLock(bool locked)
     {
         isLocked = locked;
+        lockTimeRemaining = lockTime;
     }
 
     public float Fill(float amount)
@@ -53,7 +65,13 @@ public class Room : MonoBehaviour
 
     public void Drain()
     {
+        bool hadWater = (filledAmount > 0);
         filledAmount -= drainAmount;
-        if (filledAmount < 0) filledAmount = 0;
+        if (filledAmount < 0)
+            filledAmount = 0;
+        if (filledAmount == 0 && hadWater)
+        {
+            SetLock(true);
+        }
     }
 }

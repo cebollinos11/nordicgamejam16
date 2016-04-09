@@ -10,11 +10,15 @@ public class AntDirector : MonoBehaviour
     [SerializeField] private AnimationCurve difficultyCurve;
     [SerializeField] private AnimationCurve floodDurationCurve;
     [SerializeField] private float ENDTIME = 300;
+    [SerializeField] private float initialFloodAmount = 15;
+
+
     private Dictionary<Room, float> currentFloodedRooms;
 
     private float mainRoomFillAmount = 0;
 
-    public Room[] Rooms; 
+    public Room[] Rooms;
+    public Room antColony;
 
 	// Use this for initialization
 	void Start () {
@@ -50,7 +54,14 @@ public class AntDirector : MonoBehaviour
 	        }
 	        else
 	        {
-	            pair.Key.Fill(10 * Time.deltaTime);
+                if (pair.Key.isLocked) continue;
+	            float excess = pair.Key.Fill(10*Time.deltaTime);
+	            if (excess > 0)
+	            {
+	                antColony.Fill(excess);
+                    if (antColony.filledAmount > antColony.FILLOVERFLOWLIMIT) 
+                        LoseGame();
+	            }
                 tempDict.Add(pair.Key, timeRemaining);
             }
 
@@ -67,8 +78,14 @@ public class AntDirector : MonoBehaviour
             currentFloodedRooms.Remove(floodRoom);
         }
         floodRoom.state = Room.RoomState.Filling;
+        floodRoom.Fill(initialFloodAmount);
         currentFloodedRooms.Add(floodRoom, floodDuration);
         
+    }
+
+    public void LoseGame()
+    {
+        Debug.Log("YOU LOSE! LOL");
     }
 
 }

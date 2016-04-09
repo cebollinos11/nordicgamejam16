@@ -14,11 +14,18 @@ public class ValveScript : MonoBehaviour {
 
     public Room roomToFill;
 
+    AudioSource aSource;
+    AudioClip s_valve;
+
     
 
 	// Use this for initialization
 	void Start () {
+        s_valve = Resources.Load("Sounds/Wheel") as AudioClip;
         visitedPositions = new Vector4(0f, 0f, 0f, 0f);
+        aSource = gameObject.AddComponent<AudioSource>();
+        aSource.loop = false;
+        aSource.clip = s_valve;
 	}
     
 
@@ -69,6 +76,8 @@ public class ValveScript : MonoBehaviour {
             ValveSprite.transform.rotation = Quaternion.EulerAngles(0f, 0f, angle);
 
             transform.rotation = Quaternion.Slerp(ValveSprite.transform.rotation, Quaternion.Euler(0f, 0f, angle), Time.time * 1f);
+            if(!aSource.isPlaying)
+                aSource.Play();
 
 
         }

@@ -11,6 +11,7 @@ public class GuacamoleButton : Button {
 
     AudioClip s_hit;
     AudioClip s_water;
+    AudioClip s_wrong;
 
     AudioSource aSource;
 
@@ -39,6 +40,7 @@ public class GuacamoleButton : Button {
         particles = GetComponentInChildren<ParticleSystem>();
         s_hit = Resources.Load("Sounds/guacamole") as AudioClip;
         s_water = Resources.Load("Sounds/guacamoleWater") as AudioClip;
+        s_wrong = Resources.Load("Sounds/wrongGuacamole") as AudioClip;
         aSource = gameObject.AddComponent<AudioSource>();
         aSource.loop = true;
         aSource.clip = s_water;
@@ -52,6 +54,10 @@ public class GuacamoleButton : Button {
         if (isLeaking)
         {
             StopLeaking();
+        }
+
+        else {
+            AudioManager.PlayClip(s_wrong);
         }
         
         

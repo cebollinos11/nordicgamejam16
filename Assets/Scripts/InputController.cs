@@ -13,9 +13,11 @@ public class InputController : MonoBehaviour
     private GamepadState controller4;
 
     [SerializeField] private GamePad.Index valve = GamePad.Index.Any;
+    [SerializeField] private GamePad.Index tapon = GamePad.Index.Any;
 
     [SerializeField] private ValveScript valve1;
     [SerializeField] private ValveScript valve2;
+    [SerializeField] private TaponButton tapon1;
     private Dictionary<GamePad.Index, GamepadState> padStates; 
     // Use this for initialization
     void Start () {
@@ -36,6 +38,8 @@ public class InputController : MonoBehaviour
             valve1.ReceiveInput(padStates[valve].LeftStickAxis.x, padStates[valve].LeftStickAxis.y);
         if (valve2 != null)
             valve2.ReceiveInput(padStates[valve].rightStickAxis.x, padStates[valve].rightStickAxis.y);
+        if (tapon1 != null)
+            tapon1.ReceiveInputs(padStates[tapon].A);
         
     }
 

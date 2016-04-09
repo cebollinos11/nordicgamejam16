@@ -31,6 +31,12 @@ public class InputController : MonoBehaviour
     [SerializeField]
     private GuacamoleButton guacaLeft;
 
+
+    private bool CUP = false;
+    private bool CDOWN = false;
+    private bool CLEFT = false;
+    private bool CRIGHT = false;
+
     private Dictionary<GamePad.Index, GamepadState> padStates; 
     // Use this for initialization
     void Start () {
@@ -56,16 +62,63 @@ public class InputController : MonoBehaviour
         if (jump1 != null)
             jump1.ReceiveInputs(padStates[jumping].RightTrigger,padStates[jumping].LeftTrigger);
 
-        if (guacaUp != null)
-            guacaUp.ReceiveInputs(Input.GetKey(KeyCode.Y));
-        if (guacaRight != null)
-            guacaRight.ReceiveInputs(Input.GetKey(KeyCode.J));
-        if (guacaDown != null)
-            guacaDown.ReceiveInputs(Input.GetKey(KeyCode.H));
-        if (guacaLeft != null)
-            guacaLeft.ReceiveInputs(Input.GetKey(KeyCode.G));
-         
-        if (Input.GetKeyDown(KeyCode.Y)) Debug.Log("TEST");
+        if (Input.GetAxis("N64 C Y") > 0) {
+            if (!CDOWN)
+                guacaDown.ReceiveInputs(true);
+            CDOWN = true;
+            CRIGHT = false;
+            CLEFT = false;
+            CUP = false;
+        }
+        else if (Input.GetAxis("N64 C Y") < 0)
+        {
+            if (!CUP)
+                guacaUp.ReceiveInputs(true);
+            CUP = true;
+            CDOWN = false;
+            CRIGHT = false;
+            CLEFT = false;
+
+        }
+        else {
+            CUP = false;
+            CDOWN = false;
+
+        }
+        if (Input.GetAxis("N64 C X") > 0) {
+            if (!CLEFT)
+                guacaLeft.ReceiveInputs(true);
+            CLEFT = true;
+            CRIGHT = false;
+            CUP = false;
+            CDOWN = false;
+
+
+        }
+        else if (Input.GetAxis("N64 C X") < 0)
+        {
+            if (!CRIGHT)
+                guacaRight.ReceiveInputs(true);
+            CRIGHT = true;
+            CLEFT = false;
+            CUP = false;
+            CDOWN = false;
+        }
+        else {
+            CRIGHT = false;
+            CLEFT = false;
+        }
+
+        if (!CRIGHT)
+            guacaRight.ReceiveInputs(false);
+        if (!CLEFT)
+            guacaLeft.ReceiveInputs(false);
+        if (!CUP)
+            guacaUp.ReceiveInputs(false);
+        if (!CDOWN)
+            guacaDown.ReceiveInputs(false);
+
+
     }
 
 	void Update ()
@@ -82,4 +135,5 @@ public class InputController : MonoBehaviour
         padStates.Add(GamePad.Index.Three, controller3);
         padStates.Add(GamePad.Index.Four, controller4);
     }
+
 }

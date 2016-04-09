@@ -33,6 +33,6 @@ public class Room : MonoBehaviour
 
     public void Fill(float amount)
     {
-        filledAmount += amount;
+        filledAmount += amount * fillSpeed;
     }
 }

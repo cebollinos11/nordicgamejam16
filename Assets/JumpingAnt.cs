@@ -13,12 +13,15 @@ public class JumpingAnt : MonoBehaviour {
 
     public JumpButton jb;
 
+    AudioClip s_jump;
+
     
 
 	// Use this for initialization
 	void Start () {
         ready = true;
         origPos = transform.position;
+        s_jump = Resources.Load("Sounds/Jump") as AudioClip;
         
 	}
 	
@@ -38,6 +41,8 @@ public class JumpingAnt : MonoBehaviour {
     }
 
     IEnumerator CoJump() {
+
+        AudioManager.PlayClip(s_jump);
 
         ready = false;
 

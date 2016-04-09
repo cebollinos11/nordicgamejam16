@@ -57,15 +57,15 @@ public class InputController : MonoBehaviour
             jump1.ReceiveInputs(padStates[jumping].RightTrigger,padStates[jumping].LeftTrigger);
 
         if (guacaUp != null)
-            guacaUp.ReceiveInputs(padStates[guacamoling].Y);
+            guacaUp.ReceiveInputs(Input.GetKey(KeyCode.Y));
         if (guacaRight != null)
-            guacaRight.ReceiveInputs(padStates[guacamoling].B);
+            guacaRight.ReceiveInputs(Input.GetKey(KeyCode.J));
         if (guacaDown != null)
-            guacaDown.ReceiveInputs(padStates[guacamoling].A);
+            guacaDown.ReceiveInputs(Input.GetKey(KeyCode.H));
         if (guacaLeft != null)
-            guacaLeft.ReceiveInputs(padStates[guacamoling].X);
+            guacaLeft.ReceiveInputs(Input.GetKey(KeyCode.G));
          
-        
+        if (Input.GetKeyDown(KeyCode.Y)) Debug.Log("TEST");
     }
 
 	void Update ()

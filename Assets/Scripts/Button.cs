@@ -9,7 +9,6 @@ public class Button : MonoBehaviour {
     public void ReceiveInputs(bool pressed) {
         if (pressed && !wasPressed)
         {
-            Debug.Log("pressed");
             OnPress();
             wasPressed = true;
             ShaderManager.LayerMaskQuick(GetComponent<SpriteRenderer>(), Color.blue);

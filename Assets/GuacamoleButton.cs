@@ -1,22 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GuacamoleButton : MonoBehaviour {
+public class GuacamoleButton : Button {
 
-    public string inputName;
+    public Room roomToFill;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    public override void OnPress()
+    {
+        base.OnPress();
+        ShaderManager.LayerMask(GetComponent<SpriteRenderer>(), Color.blue);
+        Debug.Log("PRess");
+        
+    }
+   
 
-        if (Input.GetButtonDown(inputName)) {
-
-            Debug.Log("button pressed!");
-        }
-	
-	}
 }

@@ -15,11 +15,21 @@ public class InputController : MonoBehaviour
     [SerializeField] private GamePad.Index valve = GamePad.Index.Any;
     [SerializeField] private GamePad.Index tapon = GamePad.Index.Any;
     [SerializeField] private GamePad.Index jumping = GamePad.Index.Any;
+    [SerializeField]
+    private GamePad.Index guacamoling = GamePad.Index.Any;
 
     [SerializeField] private ValveScript valve1;
     [SerializeField] private ValveScript valve2;
     [SerializeField] private TaponButton tapon1;
     [SerializeField] private JumpButton jump1;
+    [SerializeField]
+    private GuacamoleButton guacaUp;
+    [SerializeField]
+    private GuacamoleButton guacaRight;
+    [SerializeField]
+    private GuacamoleButton guacaDown;
+    [SerializeField]
+    private GuacamoleButton guacaLeft;
 
     private Dictionary<GamePad.Index, GamepadState> padStates; 
     // Use this for initialization
@@ -45,6 +55,15 @@ public class InputController : MonoBehaviour
             tapon1.ReceiveInputs(padStates[tapon].LeftStick);
         if (jump1 != null)
             jump1.ReceiveInputs(padStates[jumping].RightTrigger,padStates[jumping].LeftTrigger);
+
+        if (guacaUp != null)
+            guacaUp.ReceiveInputs(padStates[guacamoling].Y);
+        if (guacaRight != null)
+            guacaRight.ReceiveInputs(padStates[guacamoling].B);
+        if (guacaDown != null)
+            guacaDown.ReceiveInputs(padStates[guacamoling].A);
+        if (guacaLeft != null)
+            guacaLeft.ReceiveInputs(padStates[guacamoling].X);
          
         
     }

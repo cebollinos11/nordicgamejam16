@@ -60,24 +60,26 @@ public class ValveScript : MonoBehaviour {
 
 
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    void ReceiveInput(float xAxis, float yAxis)
+    {
 
         float angle;
-        float x = Input.GetAxis(XaxisName);
-        float y = Input.GetAxis(YaxisName);
+        float x = xAxis;
+        float y = yAxis;
         if (x != 0.0f || y != 0.0f)
         {
-            angle = Mathf.Atan2(y, x) ;
+            angle = Mathf.Atan2(y, x);
             // Do something with the angle here.
-            
+
             ValveSprite.transform.rotation = Quaternion.EulerAngles(0f, 0f, angle);
 
-            transform.rotation = Quaternion.Slerp(ValveSprite.transform.rotation, Quaternion.Euler(0f,0f,angle) , Time.time * 1f);
+            transform.rotation = Quaternion.Slerp(ValveSprite.transform.rotation, Quaternion.Euler(0f, 0f, angle), Time.time * 1f);
 
-            
+
         }
+
+    }
 	
-	}
+	
 }

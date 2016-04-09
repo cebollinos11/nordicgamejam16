@@ -9,8 +9,6 @@ public class TaponButton : Button {
     {
         base.OnPress();
 
-        roomToFill.filledAmount -= 15f;
-
-        Debug.Log("TAPON");
+        roomToFill.Drain();
     }
 }

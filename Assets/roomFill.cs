@@ -10,7 +10,6 @@ public class roomFill : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rm = transform.parent.GetComponent<Room>();
-        origScale = transform.localScale;
         bottom = transform.position.y-transform.localScale.y/2;
         
 	}
@@ -23,7 +22,6 @@ public class roomFill : MonoBehaviour {
         //    rm.filledAmount = 100f;
 
         Debug.Log(rm.filledAmount);
-        transform.localScale =  new Vector3(origScale.x, origScale.y * (rm.filledAmount/100f),origScale.z);
         //transform.position = new Vector3(transform.position.x,transform.localScale.y,transform.position.z);
 	    
 	}

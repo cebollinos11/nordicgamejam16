@@ -53,9 +53,11 @@ public class AntDirector : MonoBehaviour
 
     public void FloodRoom(float floodDuration)
     {
+        /*
         Room floodRoom = Rooms[Random.Range(0, Rooms.Length - 1)];
         floodRoom.state = Room.RoomState.Filling;
         currentFloodedRooms.Add(floodRoom, floodDuration);
+        */
     }
 
 }

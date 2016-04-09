@@ -52,7 +52,6 @@ public class AntDirector : MonoBehaviour
 	        {
 	            pair.Key.Fill(10 * Time.deltaTime);
                 tempDict.Add(pair.Key, timeRemaining);
-                Debug.Log(timeRemaining);
             }
 
 	    }

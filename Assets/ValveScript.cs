@@ -10,8 +10,7 @@ public class ValveScript : MonoBehaviour {
     public ValveTrigger[] valveTriggers;
 
     int completedTurns;
-
-    public TextMesh turnCountText;
+   
 
     public Room roomToFill;
 
@@ -20,12 +19,8 @@ public class ValveScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         visitedPositions = new Vector4(0f, 0f, 0f, 0f);
-        updateText();
 	}
-
-    void updateText() {
-        turnCountText.text = "Completed Turns: "+completedTurns.ToString();
-    }
+    
 
     public void CheckTriggers() {
 
@@ -46,7 +41,6 @@ public class ValveScript : MonoBehaviour {
 
             ShaderManager.LayerMask(ValveSprite.GetComponent<SpriteRenderer>(), Color.blue);
             completedTurns++;
-            updateText();
             roomToFill.Drain();
 
             for (int i = 0; i < valveTriggers.Length; i++)

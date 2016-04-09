@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class AntDirector : MonoBehaviour
 {
-    private float DEFAULTFLOODTIME = 15;
+    [SerializeField] private float DEFAULTFLOODTIME = 15;
     private float floodTimeRemaining = 15;
     private float currentTime = 0;
     [SerializeField] private AnimationCurve difficultyCurve;
@@ -12,11 +12,14 @@ public class AntDirector : MonoBehaviour
     [SerializeField] private float ENDTIME = 300;
     private Dictionary<Room, float> currentFloodedRooms;
 
+    private float mainRoomFillAmount = 0;
+
     public Room[] Rooms; 
 
 	// Use this for initialization
 	void Start () {
         currentFloodedRooms = new Dictionary<Room, float>();
+	    floodTimeRemaining = DEFAULTFLOODTIME;
 	}
 	
 	// Update is called once per frame
@@ -43,21 +46,30 @@ public class AntDirector : MonoBehaviour
 	        if (timeRemaining <= 0)
 	        {
 	            pair.Key.state = Room.RoomState.Idle;
-                continue;
+	            continue;
 	        }
+	        else
+	        {
+	            pair.Key.Fill(10 * Time.deltaTime);
+                tempDict.Add(pair.Key, timeRemaining);
+                Debug.Log(timeRemaining);
+            }
 
-            tempDict.Add(pair.Key, timeRemaining);
 	    }
 	    currentFloodedRooms = tempDict;
 	}
 
     public void FloodRoom(float floodDuration)
     {
-        /*
-        Room floodRoom = Rooms[Random.Range(0, Rooms.Length - 1)];
+        
+        Room floodRoom = Rooms[Random.Range(0, Rooms.Length)];
+        if (floodRoom.state == Room.RoomState.Filling)
+        {
+            currentFloodedRooms.Remove(floodRoom);
+        }
         floodRoom.state = Room.RoomState.Filling;
         currentFloodedRooms.Add(floodRoom, floodDuration);
-        */
+        
     }
 
 }

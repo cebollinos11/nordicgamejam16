@@ -13,7 +13,7 @@ public class Room : MonoBehaviour
     public RoomState state;
     public bool isLocked = false;
     public float filledAmount;
-    public float fillOverflowLimit = 65;
+    public float FILLOVERFLOWLIMIT = 65;
     public float fillSpeed = 1;
 
     //Water
@@ -39,9 +39,16 @@ public class Room : MonoBehaviour
         isLocked = locked;
     }
 
-    public void Fill(float amount)
+    public float Fill(float amount)
     {
         filledAmount += amount * fillSpeed;
+        float excess = FILLOVERFLOWLIMIT - filledAmount;
+        if (excess > 0)
+        {
+            filledAmount = FILLOVERFLOWLIMIT;
+            return excess;
+        }
+        return 0;
     }
 
     public void Drain()

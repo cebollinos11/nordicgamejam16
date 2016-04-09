@@ -18,9 +18,9 @@ public class roomFill : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        rm.filledAmount += Time.timeScale;
-        if (rm.filledAmount > 100f)
-            rm.filledAmount = 100f;
+        //rm.filledAmount += Time.timeScale;
+        //if (rm.filledAmount > 100f)
+        //    rm.filledAmount = 100f;
 
         Debug.Log(rm.filledAmount);
         transform.localScale =  new Vector3(origScale.x, origScale.y * (rm.filledAmount/100f),origScale.z);

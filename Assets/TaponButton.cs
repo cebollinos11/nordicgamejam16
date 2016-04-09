@@ -3,11 +3,13 @@ using System.Collections;
 
 public class TaponButton : Button {
 
-    public roomFill roomToFill;
+    public Room roomToFill;
 
     public override void OnPress()
     {
         base.OnPress();
+
+        roomToFill.filledAmount -= 15f;
 
         Debug.Log("TAPON");
     }

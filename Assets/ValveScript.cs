@@ -44,8 +44,8 @@ public class ValveScript : MonoBehaviour {
         }
 
         if (completeturn) {
-           
 
+            ShaderManager.LayerMask(ValveSprite.GetComponent<SpriteRenderer>(), Color.blue);
             completedTurns++;
             updateText();
 

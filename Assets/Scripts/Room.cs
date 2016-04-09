@@ -42,7 +42,7 @@ public class Room : MonoBehaviour
     public float Fill(float amount)
     {
         filledAmount += amount * fillSpeed;
-        float excess = FILLOVERFLOWLIMIT - filledAmount;
+        float excess = filledAmount - FILLOVERFLOWLIMIT;
         if (excess > 0)
         {
             filledAmount = FILLOVERFLOWLIMIT;

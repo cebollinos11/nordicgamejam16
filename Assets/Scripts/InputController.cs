@@ -42,8 +42,7 @@ public class InputController : MonoBehaviour
         if (valve2 != null)
             valve2.ReceiveInput(padStates[valve].rightStickAxis.x, padStates[valve].rightStickAxis.y);
         if (tapon1 != null)
-            tapon1.ReceiveInputs(padStates[tapon].A);
-
+            tapon1.ReceiveInputs(padStates[tapon].LeftStick);
         if (jump1 != null)
             jump1.ReceiveInputs(padStates[jumping].RightTrigger,padStates[jumping].LeftTrigger);
          

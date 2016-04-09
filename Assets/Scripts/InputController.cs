@@ -4,12 +4,13 @@ using GamepadInput;
 
 public class InputController : MonoBehaviour
 {
-    public InputTester inputTester;
 
     private GamepadState controller1;
     private GamepadState controller2;
     private GamepadState controller3;
     private GamepadState controller4;
+
+    [SerializeField] private ValveScript valve1;
     // Use this for initialization
     void Start () {
 	
@@ -27,5 +28,7 @@ public class InputController : MonoBehaviour
 	void Update ()
 	{
         Debug.Log("1: " + controller1.LeftStickAxis + "  2: " + controller2.LeftStickAxis +"  3: " + controller3.LeftStickAxis + "  4: " +controller4.LeftStickAxis);
+
+        valve1.ReceiveInput(controller4.LeftStickAxis.x, controller4.LeftStickAxis.y);
     }
 }

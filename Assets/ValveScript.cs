@@ -2,10 +2,7 @@
 using System.Collections;
 
 public class ValveScript : MonoBehaviour {
-
-    public string XaxisName;
-    public string YaxisName;
-
+    
     [SerializeField]
     GameObject ValveSprite;
     Vector3 visitedPositions;
@@ -61,7 +58,7 @@ public class ValveScript : MonoBehaviour {
 
     }
 
-    void ReceiveInput(float xAxis, float yAxis)
+    public void ReceiveInput(float xAxis, float yAxis)
     {
 
         float angle;

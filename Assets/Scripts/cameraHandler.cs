@@ -13,7 +13,7 @@ public class cameraHandler : MonoBehaviour {
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.Q)) {
-            ShakeCam();
+            ShaderManager.SS();
         }
     }
 
@@ -39,12 +39,7 @@ public class cameraHandler : MonoBehaviour {
     IEnumerator ShakeIT() {
 
         float currentShake = shakeDuration;
-        Vector3 originalPos = transform.position;
-
-  
-
-       
-        
+        Vector3 originalPos = transform.position;      
 
         do
         {

@@ -14,7 +14,7 @@ public class TaponButton : Button {
     }
     public override void OnPress()
     {
-
+        ShaderManager.SS();
         AudioManager.PlayClip(s_cork);
         
         base.OnPress();

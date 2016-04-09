@@ -3,6 +3,19 @@ using System.Collections;
 
 public class ShaderManager : Singleton<ShaderManager> {
 
+
+    cameraHandler cH;
+
+    public static void SS() {
+
+        if(Instance.cH == null)
+        {
+            Instance.cH = GameObject.FindObjectOfType<cameraHandler>();
+        }
+
+        Instance.cH.ShakeCam();
+        
+    }
     
     public static void   LayerMask(SpriteRenderer sR, Color color){
 

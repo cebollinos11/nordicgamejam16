@@ -39,10 +39,10 @@ public class GuacamoleButton : Button {
         base.Start();
         particles = GetComponentInChildren<ParticleSystem>();
         s_hit = Resources.Load("Sounds/guacamole") as AudioClip;
-        s_water = Resources.Load("Sounds/guacamoleWater") as AudioClip;
+        s_water = Resources.Load("Sounds/guacamoleWaterFade") as AudioClip;
         s_wrong = Resources.Load("Sounds/wrongGuacamole") as AudioClip;
         aSource = gameObject.AddComponent<AudioSource>();
-        aSource.loop = true;
+        //aSource.loop = true;
         aSource.clip = s_water;
         
     }

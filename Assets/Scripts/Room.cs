@@ -12,7 +12,7 @@ public class Room : MonoBehaviour
 
     public RoomState state;
     public bool isLocked = false;
-    public float filledAmount { get; private set; }
+    public float filledAmount;
     public float fillOverflowLimit = 65;
     public float fillSpeed = 1;
 

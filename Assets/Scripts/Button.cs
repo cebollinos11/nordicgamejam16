@@ -6,7 +6,7 @@ public class Button : MonoBehaviour {
     bool wasPressed;
     Vector3 origScale;
 
-    public void ReceiveInputs(bool pressed) {
+    public virtual void ReceiveInputs(bool pressed) {
         if (pressed && !wasPressed)
         {
             OnPress();
@@ -21,8 +21,12 @@ public class Button : MonoBehaviour {
             
     }
 
+    public virtual void ReceiveInputs(float jumpRight,float jumpLeft) { 
+    
+    }
+
 	// Use this for initialization
-	void Start () {
+	protected virtual void Start () {
         origScale = transform.localScale;
 	}
 	

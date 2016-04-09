@@ -7,21 +7,29 @@ public class GuacamoleButton : Button {
 
     public bool isLeaking;
 
+    [HideInInspector]ParticleSystem particles;
+
 
     public void StartLeaking() {
         isLeaking = true;
+        particles.Play();
     }
 
     public void StopLeaking()
     {
         ShaderManager.LayerMask(GetComponent<SpriteRenderer>(), Color.blue);
-        Debug.Log("FUCK IT");
+        particles.Stop();
+        isLeaking = false;
+        
+        roomToFill.Drain();
+        
     }
 
     protected override void Start()
     {
         base.Start();
-        StartLeaking();
+        particles = GetComponentInChildren<ParticleSystem>();
+        
     }
 
     public override void OnPress()

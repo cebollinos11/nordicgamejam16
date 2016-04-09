@@ -32,16 +32,15 @@ public class InputController : MonoBehaviour
 
         SaveStates();
 
-        valve1.ReceiveInput(padStates[valve].LeftStickAxis.x, padStates[valve].LeftStickAxis.y);
-        valve2.ReceiveInput(padStates[valve].rightStickAxis.x, padStates[valve].rightStickAxis.y);
-
+        if (valve1 != null)
+            valve1.ReceiveInput(padStates[valve].LeftStickAxis.x, padStates[valve].LeftStickAxis.y);
+        if (valve2 != null)
+            valve2.ReceiveInput(padStates[valve].rightStickAxis.x, padStates[valve].rightStickAxis.y);
+        
     }
 
 	void Update ()
 	{
-        Debug.Log("1: " + controller1.LeftStickAxis + "  2: " + controller2.LeftStickAxis +"  3: " + controller3.LeftStickAxis + "  4: " +controller4.LeftStickAxis);
-
-
     }
 
     private void SaveStates()

@@ -49,7 +49,7 @@ public class cameraHandler : MonoBehaviour {
         do
         {
             
-            float y = Mathf.Sin(200 * Mathf.PI * Time.time) * shakeAmplitude/100;            
+            float y = Mathf.Sin(10*Mathf.PI * Time.time) * shakeAmplitude/100;            
             transform.position += new Vector3(0, -y, 0);   
             //cam.orthographicSize -= y;
             currentShake -= Time.deltaTime;

@@ -26,6 +26,8 @@ public class Room : MonoBehaviour
     [SerializeField] protected float drainAmount = 10;
     [SerializeField] private Transform water;
 
+    AudioClip s_yay;
+
     protected virtual void Start()
     {
         filledAmount = 0;
@@ -35,6 +37,7 @@ public class Room : MonoBehaviour
         waterOrigScale = water.localScale;
         waterOriginalPos = water.position;
         tileOffset = Random.Range(0f, 1f);
+        s_yay = Resources.Load("Sounds/YAY") as AudioClip;
     }
 
     protected virtual void Update()
@@ -81,6 +84,8 @@ public class Room : MonoBehaviour
         if (filledAmount == 0 && hadWater)
         {
             SetLock(true);
+            AudioManager.PlayClip(s_yay);
+
         }
     }
 }

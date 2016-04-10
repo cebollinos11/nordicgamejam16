@@ -8,7 +8,7 @@ public class cameraHandler : MonoBehaviour {
     float shakeAmplitude;
     [SerializeField]
     float shakeDuration;
-
+    Vector3 originalPos;
 
 
     void Update() {
@@ -26,6 +26,7 @@ public class cameraHandler : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         cam = GetComponent<Camera>();
+        originalPos = transform.position; 
       
 
         
@@ -45,7 +46,7 @@ public class cameraHandler : MonoBehaviour {
     IEnumerator ShakeIT() {
 
         float currentShake = shakeDuration;
-        Vector3 originalPos = transform.position;      
+           
 
         do
         {

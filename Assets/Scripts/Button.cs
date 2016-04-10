@@ -11,7 +11,8 @@ public class Button : MonoBehaviour {
         {
             OnPress();
             wasPressed = true;
-            ShaderManager.LayerMaskQuick(GetComponent<SpriteRenderer>(), Color.blue);
+            Color col = new Color32(199, 163, 127, 66);
+            ShaderManager.LayerMaskQuick(GetComponent<SpriteRenderer>(), col);
             transform.localScale *= 4f;
         }
 

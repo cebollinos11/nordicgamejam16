@@ -26,7 +26,8 @@ public class JumpButton : Button {
         else {
             whoIsEnabled = "left";
             roomToFill.Drain();
-            ShaderManager.LayerMask(GetComponent<SpriteRenderer>(), Color.blue);
+            Color col = new Color32(183, 193, 180, 70);
+            ShaderManager.LayerMask(GetComponent<SpriteRenderer>(), col);
         }
     }
     public override void ReceiveInputs(float jumpRight, float jumpLeft)

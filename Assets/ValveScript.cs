@@ -44,9 +44,10 @@ public class ValveScript : MonoBehaviour {
                 
         }
 
-        if (completeturn) {
-
-            ShaderManager.LayerMask(ValveSprite.GetComponent<SpriteRenderer>(), Color.blue);
+        if (completeturn)
+        {
+            Color col = new Color32(201, 177, 157, 66);
+            ShaderManager.LayerMask(ValveSprite.GetComponent<SpriteRenderer>(), col);
             completedTurns++;
             roomToFill.Drain();
 

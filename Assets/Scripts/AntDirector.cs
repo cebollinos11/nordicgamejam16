@@ -62,7 +62,7 @@ public class AntDirector : MonoBehaviour
 	            if (excess > 0)
 	            {
 	                antColony.Fill(excess);
-                    if (antColony.filledAmount > antColony.FILLOVERFLOWLIMIT) 
+                    if (antColony.filledAmount >= antColony.FILLOVERFLOWLIMIT) 
                         LoseGame();
 	            }
                 tempDict.Add(pair.Key, timeRemaining);
@@ -94,7 +94,7 @@ public class AntDirector : MonoBehaviour
 
     public void LoseGame()
     {
-        Debug.Log("YOU LOSE! LOL");
+        Application.LoadLevel(2);
     }
 
 }

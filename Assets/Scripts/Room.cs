@@ -18,6 +18,9 @@ public class Room : MonoBehaviour
     public float lockTime = 10;
     public float tileOffset = 0;
 
+    public float waterMoveMultiplier = 1;
+    public float waterPosMultiplier = 1;
+
     //Water
     private Vector3 waterOrigScale;
     private Vector3 waterOriginalPos;
@@ -33,7 +36,7 @@ public class Room : MonoBehaviour
         filledAmount = 0;
         lockTimeRemaining = lockTime;
         state = RoomState.Idle;
-        water.position = new Vector3(water.position.x, water.position.y + water.transform.position.z, water.position.z);
+        water.position = new Vector3(water.position.x, water.position.y, water.position.z);
         waterOrigScale = water.localScale;
         waterOriginalPos = water.position;
         tileOffset = Random.Range(0f, 1f);
@@ -46,7 +49,7 @@ public class Room : MonoBehaviour
         water.localScale =  new Vector3(waterOrigScale.x, waterOrigScale.y, waterOrigScale.z * (filledAmount / 100f));
         water.GetComponent<MeshRenderer>().material.mainTextureScale = new Vector2(1.0f, transform.localScale.z);
         water.GetComponent<MeshRenderer>().material.mainTextureOffset = new Vector2(tileOffset, transform.localScale.z);
-        water.transform.position = new Vector3(waterOriginalPos.x, waterOriginalPos.y + water.transform.localScale.z * 2f, waterOriginalPos.z );
+        water.transform.position = new Vector3(waterOriginalPos.x, waterOriginalPos.y + water.transform.localScale.z * 2f * waterMoveMultiplier, waterOriginalPos.z );
         if (isLocked)
         {
             lockTimeRemaining -= Time.deltaTime;

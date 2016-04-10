@@ -15,6 +15,11 @@ public class cameraHandler : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Q)) {
             ShaderManager.SS();
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.LoadLevel(Application.loadedLevel);
+        }
     }
 
     private float yVelocity = 0.0F;
@@ -26,6 +31,7 @@ public class cameraHandler : MonoBehaviour {
         
 	}
 
+  
     
 
 

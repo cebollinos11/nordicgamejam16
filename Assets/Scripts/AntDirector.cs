@@ -20,10 +20,13 @@ public class AntDirector : MonoBehaviour
     public Room[] Rooms;
     public Room antColony;
 
+    AudioClip s_water;
+
 	// Use this for initialization
 	void Start () {
         currentFloodedRooms = new Dictionary<Room, float>();
 	    floodTimeRemaining = DEFAULTFLOODTIME;
+        s_water = Resources.Load("Sounds/waterNormal") as AudioClip;
 	}
 	
 	// Update is called once per frame
@@ -79,7 +82,12 @@ public class AntDirector : MonoBehaviour
         }
         floodRoom.state = Room.RoomState.Filling;
         if (!floodRoom.isLocked)
+        {
             floodRoom.Fill(initialFloodAmount);
+            ShaderManager.SS();
+            AudioManager.PlayClip(s_water);
+        }
+            
         currentFloodedRooms.Add(floodRoom, floodDuration);
         
     }

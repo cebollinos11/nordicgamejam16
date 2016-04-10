@@ -78,7 +78,8 @@ public class AntDirector : MonoBehaviour
             currentFloodedRooms.Remove(floodRoom);
         }
         floodRoom.state = Room.RoomState.Filling;
-        floodRoom.Fill(initialFloodAmount);
+        if (!floodRoom.isLocked)
+            floodRoom.Fill(initialFloodAmount);
         currentFloodedRooms.Add(floodRoom, floodDuration);
         
     }

@@ -48,8 +48,7 @@ public class cameraHandler : MonoBehaviour {
             transform.position += new Vector3(0, -y, 0);   
             //cam.orthographicSize -= y;
             currentShake -= Time.deltaTime;
-
-            Debug.Log(y);
+            
 
             yield return new WaitForEndOfFrame();
 

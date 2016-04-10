@@ -66,8 +66,6 @@ public class InputController : MonoBehaviour
             if (!CDOWN)
                 guacaDown.ReceiveInputs(true);
             CDOWN = true;
-            CRIGHT = false;
-            CLEFT = false;
             CUP = false;
         }
         else if (Input.GetAxis("N64 C Y") < 0)
@@ -76,8 +74,6 @@ public class InputController : MonoBehaviour
                 guacaUp.ReceiveInputs(true);
             CUP = true;
             CDOWN = false;
-            CRIGHT = false;
-            CLEFT = false;
 
         }
         else {
@@ -90,10 +86,6 @@ public class InputController : MonoBehaviour
                 guacaLeft.ReceiveInputs(true);
             CLEFT = true;
             CRIGHT = false;
-            CUP = false;
-            CDOWN = false;
-
-
         }
         else if (Input.GetAxis("N64 C X") < 0)
         {
@@ -101,8 +93,6 @@ public class InputController : MonoBehaviour
                 guacaRight.ReceiveInputs(true);
             CRIGHT = true;
             CLEFT = false;
-            CUP = false;
-            CDOWN = false;
         }
         else {
             CRIGHT = false;

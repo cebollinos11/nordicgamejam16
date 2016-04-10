@@ -31,8 +31,6 @@ public class Room : MonoBehaviour
         filledAmount = 0;
         lockTimeRemaining = lockTime;
         state = RoomState.Idle;
-        Debug.Log(water.position.ToString());
-        Debug.Log(water.position.ToString());
         water.position = new Vector3(water.position.x, water.position.y + water.transform.position.z, water.position.z);
         waterOrigScale = water.localScale;
         waterOriginalPos = water.position;
